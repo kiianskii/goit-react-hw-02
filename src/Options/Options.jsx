@@ -1,13 +1,12 @@
+// import { nanoid } from 'nanoid'
 
-
-function Options({ data, handleVote, totalFeedbacks, handleDeleteVotes}) {
+function Options({ handleVote, totalFeedbacks, handleDeleteVotes}) {
   return (
       <div>
-          {data.map(btn => (
-					<button onClick={() => handleVote(btn)} key={btn}>
-						{btn}
-					</button>
-          ))}
+          <button onClick={() => handleVote("good")}>Good</button>
+          <button onClick={() => handleVote("bad")}>Bad</button>
+          <button onClick={() => handleVote("neutral")}>Neutral</button>
+
           {totalFeedbacks !== 0 ? <button onClick={handleDeleteVotes}>Reset</button> : ""}
     </div>
   )
