@@ -1,11 +1,19 @@
 
 
-function Feedback() {
+function Feedback({ totalFeedbacks, state, positive }) {
+    if (totalFeedbacks === 0) {
+        return (<p>
+            No feedback yet!
+        </p>)
+    }
+
   return (
       <div>
-          <p>Good: 0</p>
-          <p>Bad: 0</p>
-          <p>Neutral: 0</p>
+          <p>Good: {state.good}</p>
+          <p>Bad: {state.bad}</p>
+          <p>Neutral: {state.neutral}</p>
+          {totalFeedbacks !==0 ? <p>Total: {totalFeedbacks}</p> : ""}
+          {state.good !== 0 || state.bad !==0 || state.neutral !== 0 ? <p>Positive: {positive}%</p> : ""}
     </div>
   )
 }
