@@ -2,10 +2,23 @@ import './App.css'
 import Description from './Description/Description'
 import Feedback from './Feedback/Feedback'
 import Options from './Options/Options'
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const test = { good: 0, neutral: 0, bad: 0 }
 
 function App() {
-  const [state, setState] = useState({ good: 0, neutral: 0, bad: 0 })
+  const [state, setState] = useState(() => {
+    const savedClicks = JSON.parse(window.localStorage.getItem("saved-data"));
+    if (savedClicks) {
+      return savedClicks;
+    }
+    return test;
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("saved-data", JSON.stringify(state));
+  }, [state]);
+
 
   const handleVote = value => {
     setState(prev => ({ ...prev, [value]: prev[value] + 1 }))

@@ -1,4 +1,3 @@
-// import { nanoid } from 'nanoid'
 
 function Options({ handleVote, totalFeedbacks, handleDeleteVotes}) {
   return (
