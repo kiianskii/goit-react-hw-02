@@ -1,11 +1,6 @@
 
 function Feedback({ totalFeedbacks, state, positive }) {
-    if (totalFeedbacks === 0) {
-        return (<p>
-            No feedback yet!
-        </p>)
-    }
-
+  
   return (
       <div>
           <p>Good: {state.good}</p>
